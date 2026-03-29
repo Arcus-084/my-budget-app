@@ -3,12 +3,11 @@ from supabase import create_client
 import pandas as pd
 
 # --- KONEKSI KE SUPABASE ---
-# Masukkan data dari Notepad kamu di sini
 SUPABASE_URL = "https://pjdvfdzmrwanbqxznixu.supabase.co"
 SUPABASE_KEY = "sb_publishable_KbGny_svdRAyRSYvEL32iQ_RTLXfbNM"
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-st.set_page_config(page_title="Dani Budget Tracker", layout="wide")
+st.set_page_config(page_title="Budget Tracker", layout="wide")
 st.title("📊 Personal Budget Tracker")
 
 # --- BAGIAN 1: FORM INPUT ---
@@ -40,7 +39,6 @@ res = supabase.table("transaction").select("*").execute()
 df = pd.DataFrame(res.data)
 
 if not df.empty:
-    # Logika Saldo (Hijau untuk Masuk, Merah untuk Keluar)
     df['Saldo_Visual'] = df.apply(lambda x: x['nominal'] if x['arus_kas'] == 'Masuk' else -x['nominal'], axis=1)
     
     col1, col2 = st.columns([1, 2])
