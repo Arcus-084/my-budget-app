@@ -9,7 +9,7 @@ SUPABASE_KEY = "sb_publishable_KbGny_svdRAyRSYvEL32iQ_RTLXfbNM"
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.set_page_config(page_title="Dani Budget Tracker", layout="wide")
-st.title("📊 Personal & Business Budget Tracker")
+st.title("📊 Personal Budget Tracker")
 
 # --- BAGIAN 1: FORM INPUT ---
 with st.sidebar:
